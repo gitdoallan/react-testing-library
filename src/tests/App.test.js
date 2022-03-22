@@ -1,12 +1,10 @@
 import React from 'react';
 import { screen } from '@testing-library/react';
-import renderWithRouter from './renderWithTouter';
+import renderWithRouter from './renderWithRouter';
 import App from '../App';
 
 describe('1. Teste se o topo da aplicação contém um conjunto fixo de links', () => {
-  beforeEach(() => {
-    renderWithRouter(<App />);
-  });
+  beforeEach(() => renderWithRouter(<App />));
   it('O primeiro link deve possuir o texto Home.', () => {
     const link = screen.getByText('Home');
     expect(link).toBeInTheDocument();

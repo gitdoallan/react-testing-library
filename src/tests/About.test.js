@@ -1,9 +1,10 @@
 import React from 'react';
-import { screen, render } from '@testing-library/react';
+import { screen } from '@testing-library/react';
+import renderWithRouter from './renderWithRouter';
 import About from '../components/About';
 
 describe('Teste se a página contém as informações sobre a Pokédex.', () => {
-  beforeEach(() => render(<About />));
+  beforeEach(() => renderWithRouter(<About />));
   it('Teste se a página contém um heading h2 com o texto About Pokédex.', () => {
     const heading = screen.getByRole('heading', { level: 2, name: 'About Pokédex' });
     expect(heading).toBeInTheDocument();
@@ -14,6 +15,6 @@ describe('Teste se a página contém as informações sobre a Pokédex.', () => 
   });
   it('Teste se a página contém a seguinte imagem de uma Pokédex:', () => {
     const img = screen.getByRole('img');
-    expect(img).toBeInTheDocument();
+    expect(img).toHaveAttribute('src', 'https://cdn2.bulbagarden.net/upload/thumb/8/86/Gen_I_Pok%C3%A9dex.png/800px-Gen_I_Pok%C3%A9dex.png');
   });
 });
